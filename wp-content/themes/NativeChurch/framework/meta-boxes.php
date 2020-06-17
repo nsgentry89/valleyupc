@@ -679,7 +679,7 @@ $meta_boxes[] = array(
             'desc' => esc_html__("Select video source.", 'framework'),
             'type' => 'select',
             'options' => array(
-                '1' => esc_html__('By Vimeo/Youtube URL', 'framework'),
+                '1' => esc_html__('By Facebook/Vimeo/Youtube URL', 'framework'),
                 '2' => esc_html__('Custom Video', 'framework'),
             ),
         ),

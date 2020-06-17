@@ -15,7 +15,7 @@ if (!defined('ABSPATH'))
  * 	imic_admin_css()
  * 	imic_analytics()
  * 	imic_custom_styles()
- * 	imic_custom_script()
+ * 	custom_script()
  *  imic_content_filter()
  *  imic_video_embed()
  *  imic_video_youtube()
@@ -271,7 +271,11 @@ if (!function_exists('imic_video_embed')) {
         if (strpos($url, 'youtube') || strpos($url, 'youtu.be')) {
             return imic_video_youtube($url, $width, $height,$autopaly);
         } else {
-            return imic_video_vimeo($url, $width, $height,$autopaly);
+            if (strpos($url, 'facebook')) {
+                return imic_video_facebook($url, $width, $height,$autopaly);
+            } else {
+                return imic_video_vimeo($url, $width, $height,$autopaly);
+            }
         }
     }
 }
@@ -283,6 +287,23 @@ if (!function_exists('imic_video_youtube')) {
     function imic_video_youtube($url, $width = 200, $height = 150,$autopaly= "") {
         preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/", $url, $video_parts);
          return '<iframe itemprop="video" src="https://youtube.com/embed/' . $video_parts[1] . '?autoplay='.$autopaly.'&rel=0" width="' . $width . '" height="' . $height . '" allowfullscreen="allowfullscreen"></iframe>';
+    }
+}
+/* -------------------------------------------------------------------------------------
+  Facebook Video
+  @since NativeChurch 1.2
+------------------------------------------------------------------------------------- */
+if (!function_exists('imic_video_facebook')) {
+    function imic_video_facebook($url, $width = 200, $height = 150,$autopaly= "") {
+         return '<div id="fb-root"></div><script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script><div class="fb-video" data-href="' . $url . 'data-show-text="false">
+    <div class="fb-xfbml-parse-ignore">
+      <blockquote cite="'.$url.'">
+        <a href="'.$url.'">How to Share With Just Friends</a>
+        <p>How to share with just friends.</p>
+        Posted by <a href="https://www.facebook.com/facebook/">Facebook</a> on Friday, December 5, 2014
+      </blockquote>
+    </div>
+  </div>';
     }
 }
 /* -------------------------------------------------------------------------------------
