@@ -1,0 +1,30 @@
+{
+  "name": "valleyupc",
+  "version": "0.0.1",
+  "description": "Website for Courtenay, BC Valley United Pentacostal church",
+  "main": "index.php",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nsgentry89/valleyupc.git"
+  },
+  "keywords": [
+    "church",
+    "wordpress",
+    "native",
+    "church",
+    "courentay"
+  ],
+  "author": "Nathan Gentry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nsgentry89/valleyupc/issues"
+  },
+  "homepage": "https://github.com/nsgentry89/valleyupc#readme",
+  "devDependencies": {
+    "gulp-cli": "^2.3.0",
+    "sass": "^1.26.8"
+  }
+}
