@@ -762,6 +762,14 @@ $meta_boxes[] = array(
 			'desc' => esc_html__('These media items will be displayed on single sermon page','framework'),
 			'id' => 'heading_id4',
 		),
+		// ADDITIONAL Facebook VIDEO
+        array(
+            'name' => esc_html__('Additional Facebook Video', 'framework'),
+            'id' => $prefix . 'sermons_add_facebook_url',
+            'desc' => esc_html__("Enter Facebook video URL", 'framework'),
+            'type' => 'url',
+           
+        ),
 		// ADDITIONAL VIMEO VIDEO
         array(
             'name' => esc_html__('Additional Vimeo Video', 'framework'),

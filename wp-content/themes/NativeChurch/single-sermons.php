@@ -14,6 +14,9 @@ $add_custom_video_mp4 = get_post_meta(get_the_ID(),'imic_sermons_add_video_mp4',
 $add_custom_video_webm = get_post_meta(get_the_ID(),'imic_sermons_add_video_webm',true);
 $add_custom_video_ogv = get_post_meta(get_the_ID(),'imic_sermons_add_video_ogv',true);
 $add_custom_video_poster = get_post_meta(get_the_ID(),'imic_sermons_add_video_poster',true);
+if (!empty($custom['imic_sermons_add_facebook_url'][0])){
+$add_facebook_video_url = $custom['imic_sermons_add_facebook_url'][0];
+}
 if (!empty($custom['imic_sermons_add_vimeo_url'][0])){
 $add_vimeo_video_url = $custom['imic_sermons_add_vimeo_url'][0];
 }
@@ -89,7 +92,8 @@ if (!empty($attach_full_audio)) {
 <div class="tabs" id="additional-media-sermons">
   	<ul class="nav nav-tabs">
     	<?php if (!empty($add_custom_video_mp4)){ ?><li> <a data-toggle="tab" href="#addvideo"> <i class="fa fa-video-camera"></i> </a> </li><?php } ?>
-    	<?php if (!empty($add_vimeo_video_url)){ ?><li> <a data-toggle="tab" href="#addvimeo"> <i class="fa fa-vimeo-square"></i> </a> </li><?php } ?>
+        <?php if (!empty($add_vimeo_video_url)){ ?><li> <a data-toggle="tab" href="#addvimeo"> <i class="fa fa-vimeo-square"></i> </a> </li><?php } ?>
+        <?php if (!empty($add_facebook_video_url)){ ?><li> <a data-toggle="tab" href="#addfacebook"> <i class="fa fa-facebook-square"></i> </a> </li><?php } ?>
     	<?php if (!empty($add_youtube_video_url)){ ?><li> <a data-toggle="tab" href="#addyoutube"> <i class="fa fa-youtube"></i> </a> </li><?php } ?>
     	<?php if (!empty($add_soundcloud_audio_url)){ ?><li> <a data-toggle="tab" href="#addsoundcloud"> <i class="fa fa-soundcloud"></i> </a> </li><?php } ?>
    	</ul>
@@ -108,11 +112,14 @@ if (!empty($attach_full_audio)) {
                     <param name="flashvars" value="controls=true&file=<?php echo esc_url($add_custom_video_mp4); ?>" />
                 </object>
             </video>
-    	</div><?php } ?>
+    	</div><?php } ?><?php if (!empty($add_facebook_video_url)){ ?><div id="addfacebook" class="tab-pane">
+            <?php echo imic_video_embed($custom['imic_sermons_add_facebook_url'][0], '200', '150'); ?>
+            
+        </div><?php }else{echo "empty";} ?>
     	<?php if (!empty($add_vimeo_video_url)){ ?><div id="addvimeo" class="tab-pane">
-      		<?php echo imic_video_embed($custom['imic_sermons_add_vimeo_url'][0], '200', '150'); ?>
-      		
-    	</div><?php } ?>
+            <?php echo imic_video_embed($custom['imic_sermons_add_vimeo_url'][0], '200', '150'); ?>
+            
+        </div><?php } ?>
     	<?php if (!empty($add_youtube_video_url)){ ?><div id="addyoutube" class="tab-pane">
       		<?php echo imic_video_embed($custom['imic_sermons_add_youtube_url'][0], '200', '150'); ?>
       		
