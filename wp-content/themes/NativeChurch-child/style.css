@@ -10,3 +10,11 @@
 
 /* =Theme customization starts here
 ------------------------------------------------------- */
+
+.site-header h1.logo {
+    height: 140px !important;
+    padding: 15px 15px !important;
+}
+.site-header h1.logo a img {
+	max-height: 120px !important;
+}
