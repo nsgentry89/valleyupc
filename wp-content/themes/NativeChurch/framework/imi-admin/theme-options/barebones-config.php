@@ -1454,43 +1454,43 @@ Redux::setSection( $opt_name, array(
     'icon' => 'el-icon-brush',
     'title' => esc_html__('Color Scheme', 'framework'),
     'fields' => array(
-		array(
-			'id' => 'section-backgrounds-start',
-			'type' => 'section',
-			'title' => esc_html__('Primary Color', 'framework'),
-			'subtitle' => esc_html__('Set the primary color scheme for the website', 'framework'),
-			'indent' => false
-	   ),
-		 array(
-			'id'=>'theme_color_type',
-			'type' => 'button_set',
-			'compiler'=>true,
-			'title' => esc_html__('Site Color Scheme', 'framework'), 
-			'subtitle' => esc_html__('Select the color scheme of the website', 'framework'),
-			'options' => array(
-					'0' => esc_html__('Pre-Defined Color Schemes','framework'),
-					'1' => esc_html__('Custom Color','framework')
-				),
-			'default' => '0',
-			),
+        array(
+            'id' => 'section-backgrounds-start',
+            'type' => 'section',
+            'title' => esc_html__('Primary Color', 'framework'),
+            'subtitle' => esc_html__('Set the primary color scheme for the website', 'framework'),
+            'indent' => false
+       ),
+         array(
+            'id'=>'theme_color_type',
+            'type' => 'button_set',
+            'compiler'=>true,
+            'title' => esc_html__('Site Color Scheme', 'framework'), 
+            'subtitle' => esc_html__('Select the color scheme of the website', 'framework'),
+            'options' => array(
+                    '0' => esc_html__('Pre-Defined Color Schemes','framework'),
+                    '1' => esc_html__('Custom Color','framework')
+                ),
+            'default' => '0',
+            ),
         array(
             'id' => 'theme_color_scheme',
             'type' => 'select',
-			'required' => array('theme_color_type','equals','0'),
+            'required' => array('theme_color_type','equals','0'),
             'title' => esc_html__('Predefined Schemes', 'framework'),
             'subtitle' => esc_html__('Select your themes alternative color scheme.', 'framework'),
             'options' => array('color1.css' => 'color1.css', 'color2.css' => 'color2.css', 'color3.css' => 'color3.css', 'color4.css' => 'color4.css', 'color5.css' => 'color5.css', 'color6.css' => 'color6.css', 'color7.css' => 'color7.css', 'color8.css' => 'color8.css', 'color9.css' => 'color9.css', 'color10.css' => 'color10.css'),
             'default' => 'color1.css',
-        ),	
-		array(
-			'id'=>'custom_theme_color',
-			'type' => 'color',
-			'required' => array('theme_color_type','equals','1'),
-			'title' => esc_html__('Custom Color', 'framework'), 
-			'subtitle' => esc_html__('Pick a primary color for the template.', 'framework'),
-			'validate' => 'color',
-		),
-	)
+        ),  
+        array(
+            'id'=>'custom_theme_color',
+            'type' => 'color',
+            'required' => array('theme_color_type','equals','1'),
+            'title' => esc_html__('Custom Color', 'framework'), 
+            'subtitle' => esc_html__('Pick a primary color for the template.', 'framework'),
+            'validate' => 'color',
+        ),
+    )
 ));
 Redux::setSection( $opt_name, array(
     'icon' => 'el-icon-font',
@@ -2284,6 +2284,13 @@ Redux::setSection( $opt_name, array(
 				),
 			'default' => '0',
 			),
+        array(
+            'id' => 'theme-events-page',
+            'type' => 'select',
+            'data' => 'pages',
+            'title' => __( 'All Events Page' , 'framework' ),
+            'desc' => __( 'Select the page for all events' , 'framework' )
+        ),
 	),
 ));
 
@@ -2323,6 +2330,13 @@ Redux::setSection( $opt_name, array(
 			'subtitle' => esc_html__('Enter button/link text for read more', 'framework'),
 			'default' => 'Read more',
 		),
+        array(
+            'id' => 'theme-staff-page',
+            'type' => 'select',
+            'data' => 'pages',
+            'title' => __( 'All Staff Page' , 'framework' ),
+            'desc' => __( 'Select the page for all staff' , 'framework' )
+        ),
 	)
 ));
 Redux::setSection( $opt_name, array(
@@ -2337,6 +2351,13 @@ Redux::setSection( $opt_name, array(
             'subtitle' => esc_html__('Enable/Disable filters on sermons archive pages"', 'framework'),
             "default" => 1,
        	),
+        array(
+            'id' => 'theme-sermon-page',
+            'type' => 'select',
+            'data' => 'pages',
+            'title' => __( 'All Sermons Page' , 'framework' ),
+            'desc' => __( 'Select the page for all sermons' , 'framework' )
+        ),
 	)
 ));
 			

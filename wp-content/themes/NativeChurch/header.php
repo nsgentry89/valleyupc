@@ -424,7 +424,7 @@ wp_head(); ?>
                                             if ($i == 1) {
                                            $term_link = get_term_link($terms, 'sermons-category');
                                            echo'<div class="col-md-2 col-sm-2 col-xs-4">
-                                                <a href="' . $term_link . '" class="pull-right btn btn-primary">' . esc_html__('All sermons', 'framework') . '</a>
+                                                <a href="' . (!empty($options['theme-sermon-page']) ? esc_url(home_url()."?page_id=".$options['theme-sermon-page']) : $term_link) . '" class="pull-right btn btn-primary">' . esc_html__('All sermons', 'framework') . '</a>
                                                 </div>';
                                                 }
                                             $i++;

@@ -335,7 +335,7 @@ if($imic_upcoming_events_area==1) {
                        if(!empty($imic_all_event_sermon_url)||!empty($pages_s[0]->ID)){
                         $imic_all_event_sermon_url = !empty($imic_all_event_sermon_url) ? $imic_all_event_sermon_url: get_permalink($pages_s[0]->ID);
                         echo'<div class="col-md-2 hidden-sm hidden-xs">
-        	<a href="' . $imic_all_event_sermon_url . '" class="btn btn-block btn-primary">' . esc_html__('All Sermons', 'framework') . '</a>
+        	<a href="' . (!empty($options['theme-sermon-page']) ? esc_url(home_url()."?page_id=".$options['theme-sermon-page']) : $imic_all_event_sermon_url) . '" class="btn btn-block btn-primary">' . esc_html__('All Sermons', 'framework') . '</a>
         </div>';
                     }}
                     ?>

@@ -2612,7 +2612,7 @@ if(!function_exists('imic_sermons_filter_shortcode'))
 		{
 			$output .= '<li>
 			<select id="sermons-category" class="postform nativechurch_sermon_filters" name="sermons-category">
-			<option selected value="" data-objects="">'.esc_html__('Sermons Categories', 'framework').'</option>';
+			<option selected value="" data-objects="">'.esc_html__('Search by category', 'framework').'</option>';
 			foreach($get_sermon_categories as $category)
 			{
                 $objects = json_encode(get_objects_in_term( $category->term_id, 'sermons-category'));
@@ -2627,7 +2627,7 @@ if(!function_exists('imic_sermons_filter_shortcode'))
 		{
 			$output .= '<li>
 			<select id="sermons-tag" class="postform nativechurch_sermon_filters" name="sermons-tag">
-			<option selected value="" data-objects="">'.esc_html__('Sermons Tag', 'framework').'</option>';
+			<option selected value="" data-objects="">'.esc_html__('Search by tag', 'framework').'</option>';
 			foreach($get_sermon_tags as $tag)
 			{
                 $objects = json_encode(get_objects_in_term( $tag->term_id, 'sermons-tag'));
@@ -2642,7 +2642,7 @@ if(!function_exists('imic_sermons_filter_shortcode'))
 		{
 			$output .= '<li>
 			<select id="sermons-speakers" class="postform nativechurch_sermon_filters" name="sermons-speakers">
-			<option selected value="" data-objects="">'.esc_html__('Sermons Speakers', 'framework').'</option>';
+			<option selected value="" data-objects="">'.esc_html__('Search by speaker', 'framework').'</option>';
 			foreach($get_sermon_speakers as $speaker)
 			{
                 $objects = json_encode(get_objects_in_term( $speaker->term_id, 'sermons-speakers'));
