@@ -2598,13 +2598,14 @@ if(!function_exists('imic_sermons_filter_shortcode'))
 {
 	function imic_sermons_filter_shortcode($atts, $content = null) 
 	{
+    $options = get_option('imic_options');
     extract(shortcode_atts(array(
 		'categories' => '',
 		'tags' => '',
 		'speakers' => ''
     	), $atts));
 		$output = '';
-		$output .= '<form class="sermon-filter-search searchandfilter" method="get" action="'.esc_url(home_url()).'">
+		$output .= '<form class="sermon-filter-search searchandfilter">
 		<div>
 		<ul>';
 		$get_sermon_categories = get_terms('sermons-category');
@@ -2616,7 +2617,7 @@ if(!function_exists('imic_sermons_filter_shortcode'))
 			foreach($get_sermon_categories as $category)
 			{
                 $objects = json_encode(get_objects_in_term( $category->term_id, 'sermons-category'));
-				$selected = ($categories==$category->slug)?'selected':'';
+				$selected = ($categories==$category->slug)?'':'';
 				$output .= "<option class='terms-search' ".$selected." value='".$category->slug."' data-objects='".$objects."'>".$category->name." (".$category->count.")</option>";
 			}
 			$output .= '</select>
@@ -2631,7 +2632,7 @@ if(!function_exists('imic_sermons_filter_shortcode'))
 			foreach($get_sermon_tags as $tag)
 			{
                 $objects = json_encode(get_objects_in_term( $tag->term_id, 'sermons-tag'));
-				$selected = ($tags==$tag->slug)?'selected':'';
+				$selected = ($tags==$tag->slug)?'':'';
 				$output .= "<option class='terms-search' ".$selected." value='".$tag->slug."' data-objects='".$objects."'>".$tag->name." (".$tag->count.")</option>";
 			}
 			$output .= '</select>
@@ -2646,18 +2647,31 @@ if(!function_exists('imic_sermons_filter_shortcode'))
 			foreach($get_sermon_speakers as $speaker)
 			{
                 $objects = json_encode(get_objects_in_term( $speaker->term_id, 'sermons-speakers'));
-				$selected = ($speakers==$speaker->slug)?'selected':'';
+				$selected = ($speakers==$speaker->slug)?'':'';
 				$output .= "<option class='terms-search' ".$selected." value='".$speaker->slug."' data-objects='".$objects."'>".$speaker->name." (".$speaker->count.")</option>";
 			}
 			$output .= '</select>
 			</li>';
 		}
 		$output .= '<li>
-		<input class="btn btn-default" type="submit" value="'.esc_html__('Filter', 'framework').'">
+		<input id="sermon-filter-btn" class="btn btn-default" type="buttton" value="'.esc_html__('Filter', 'framework').'">
 		</li>
 		</ul>
 		</div>
 		</form>';
+        if(!empty($options['theme-sermon-page']) && $options['theme-sermon-page'] != null){
+            $output .= '<script>
+            jQuery(function(){
+                jQuery("#sermon-filter-btn").on("click", function(e){
+                    if(jQuery(".sermon-filter-search").children("option:selected").val() == "" ){
+                        jQuery(this).attr("action", "'.esc_url(home_url()).'").submit();
+                    }else{
+                        window.location.assign("'.esc_url(home_url().'?page_id='.$options['theme-sermon-page']).'");
+                    }
+                });
+            });
+        </script>';
+        }
 		return $output;
 	}
 	add_shortcode( 'imic-searchandfilter', 'imic_sermons_filter_shortcode' );
